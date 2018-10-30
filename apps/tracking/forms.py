@@ -6,13 +6,10 @@ from apps.tracking.models import Employee, Project, Task
 
 
 class LoadHours(forms.Form):
-    employee = forms.ModelChoiceField(queryset=Employee.objects.all())
-    task = forms.ModelChoiceField(queryset=None)
-
-    hours = forms.IntegerField()
-    date = forms.DateField()
-
-    def __init__(self, *args, **kwargs):
-        project = kwargs.pop('project')
-        super().__init__(*args, **kwargs)
-        self.fields['task'].queryset = Task.objects.filter(project=project)
+    CHOICES = ((1, '1'),
+               (2, '2'),
+               (3, '3'),
+               (5, '5'),
+               (8, '8'),
+               )
+    hours = forms.ChoiceField(choices=CHOICES, label="", help_text="")

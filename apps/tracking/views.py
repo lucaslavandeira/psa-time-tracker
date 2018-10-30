@@ -1,6 +1,7 @@
+from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from apps.tracking.forms import LoadHours
@@ -20,21 +21,21 @@ class ProjectDetail(View):
         project = Project.objects.get(id=project)
         context = {
             'project': project,
-            'form': LoadHours(project=project),
+            'form': LoadHours(auto_id=False),
         }
 
         return render(request, 'project_detail.html', context)
 
-    def post(self, request, project):
-        project = Project.objects.get(id=project)
 
-        form = LoadHours(request.POST, project=project)
 
-        if form.is_valid():
-            task = form.cleaned_data['task']
-            task.hours_spent += form.cleaned_data['hours']
-            task.save()
+def post(request, project, task):
+    project = Project.objects.get(id=project)
+    form = LoadHours(request.POST)
+    task = project.task_set.get(id=task)
+    if form.is_valid():
+        task.hours_spent += int(form.cleaned_data['hours'])
+        task.save()
 
-            return HttpResponse("OK!!")
+        return HttpResponseRedirect(reverse('project-detail', kwargs={'project': project.id}))
 
-        return HttpResponse("rompiste todo")
+    return HttpResponse("rompiste todo")
