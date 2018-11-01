@@ -137,7 +137,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'apps/tracking/static'),
 )
 
-)
-
 # Activate Django-Heroku.
 django_heroku.settings(locals())
