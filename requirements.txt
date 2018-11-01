@@ -2,3 +2,5 @@ django==2.1
 behave==1.2.6
 behave-django==1.1.0
 whitenoise==4.1
+gunicorn==19.9.0
+django-heroku==0.3.1
