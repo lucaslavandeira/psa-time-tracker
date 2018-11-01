@@ -1,1 +1,1 @@
-web: gunicorn myproject.wsgi
+web: gunicorn time_tracker.wsgi
