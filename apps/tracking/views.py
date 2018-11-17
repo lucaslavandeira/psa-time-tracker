@@ -11,6 +11,7 @@ def landing(request):
     employee = Employee.get_from_session()
     context = {
         'projects': employee.assigned_projects.all(),
+        'employee': employee,
     }
 
     return render(request, 'landing.html', context)

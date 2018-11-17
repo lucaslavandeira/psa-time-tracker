@@ -9,6 +9,7 @@
     </nav>
 
     <h1>{{ project }}</h1>
+    {% lorem %}
     <table class="table">
         <tr>
             <td><b>Tarea</b></td>
@@ -29,6 +30,15 @@
             </tr>
         {% endfor %}
     </table>
+
+    <div class="row">
+        <div class="col">
+            <p><b>Fecha de finalizacion:</b> 12/17/2018</p>
+        </div>
+        <div class="col">
+            <img src="{% static 'tracking/gantt.jpg' %}">
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}

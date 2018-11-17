@@ -6,6 +6,7 @@
         </ol>
     </nav>
 
+    <h1>Bienvenido, {{ employee }}</h1>
     <ul class="list-group">
         {% for project in projects %}
             <a href="{% url 'project-detail' project.id %}">
