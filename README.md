@@ -34,3 +34,9 @@ Verificar que se levanto bien yendo a `http://localhost:8000` en un browser.
 
 Como está fuera de alcance el alta de proyectos, tareas, y empleados, se pueden generar a través de la UI del Admin de Django. Para ello, crear una cuenta de superusuario: `./manage.py createsuperuser`, y seguir las instrucciones. Luego, desde `http://localhost:8000/admin` se puede utilizar la interfaz visual para crear los modelos necesarios.
 
+## Tests
+
+Se implementó una suite de pruebas de BDD con Behave, que utiliza la especificación de Gherkin para escribir casos de pruebas. 
+
+Se pueden correr con `./manage.py behave`.
+
