@@ -1,4 +1,5 @@
 # PSA time-tracker
+[![Build Status](https://travis-ci.org/lucaslavandeira/psa-time-tracker.svg?branch=master)](https://travis-ci.org/lucaslavandeira/psa-time-tracker)
 
 [Acceder](https://psa-time-tracker.herokuapp.com)
 
