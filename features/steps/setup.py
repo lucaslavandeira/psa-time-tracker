@@ -1,6 +1,6 @@
 from behave import *
 
-from apps.tracking.models import Employee, Project, Task, TaskAssignment
+from apps.tracking.models import Employee, Project
 
 use_step_matcher("re")
 
@@ -40,4 +40,4 @@ def step_impl(context):
 
 @then("Las horas invertidas iniciales de la tarea son cero")
 def step_impl(context):
-    assert context.task.get_hours() == 0
+    assert context.task.hours_spent == 0

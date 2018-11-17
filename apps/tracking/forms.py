@@ -1,15 +1,10 @@
-from django import forms
-from django.contrib.admin.widgets import AdminDateWidget
-from django.forms import SelectDateWidget
+from datetime import datetime
 
-from apps.tracking.models import Employee, Project, Task
+from django import forms
+from django.conf import settings
 
 
 class LoadHours(forms.Form):
-    CHOICES = ((1, '1'),
-               (2, '2'),
-               (3, '3'),
-               (5, '5'),
-               (8, '8'),
-               )
-    hours = forms.ChoiceField(choices=CHOICES, label="", help_text="")
+    CHOICES = [(i, str(i)) for i in range(1, settings.WORK_DAY_HOURS + 1)]
+    hours = forms.ChoiceField(choices=CHOICES, label='Horas')
+    date = forms.DateField(initial=datetime.today(), label='Fecha')

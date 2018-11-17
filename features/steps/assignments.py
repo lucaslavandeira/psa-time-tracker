@@ -29,9 +29,7 @@ def step_impl(context):
 
 @then("Se crea una asignacion de tarea entre el empleado y esta")
 def step_impl(context):
-    assignment = context.employee.taskassignment_set.first()
-    assert assignment.employee == Employee.objects.first()
-    assert assignment.task == Task.objects.first()
+    assert context.task in context.employee.assigned_tasks.all()
 
 
 @when("Se intenta asignar el empleado a la tarea")
@@ -50,7 +48,7 @@ def step_impl(context):
 
 @then("La asignacion inicialmente tiene cero horas invertidas")
 def step_impl(context):
-    assert context.employee.taskassignment_set.first().hours_spent == 0
+    assert context.employee.get_hours_worked() == 0
 
 
 @given("Existe un empleado en un proyecto, y existe una tarea a la que no esta asignado")
@@ -58,5 +56,5 @@ def step_impl(context):
     context.project = Project.objects.create(name='Proyecto ejemplo')
     context.employee = Employee.objects.create(name='Lucas Lavandeira')
     context.employee.assigned_projects.add(context.project)
-    context.project.task_set.create(description='Tarea ejemplo', hours_estimated=10)
+    context.task = context.project.task_set.create(description='Tarea ejemplo', hours_estimated=10)
 

@@ -9,52 +9,29 @@
     </nav>
 
     <h1>{{ project }}</h1>
-
-{#    <form action="{% url 'project-detail' project.id %}" method="post">#}
-{#    {% csrf_token %}#}
-{#    {{ form.as_ul }}#}
-{#    <input type="submit" value="Submit">#}
-{##}
-{#    #}
-{#</form>#}
-
     <table class="table">
         <tr>
-            <td>Tarea</td>
-            <td>Horas estimadas</td>
-            <td>Horas trabajadas</td>
-            <td>Cargar</td>
+            <td><b>Tarea</b></td>
+            <td><b>Horas estimadas</b></td>
+            <td><b>Horas trabajadas</b></td>
         </tr>
 
-        {% for task in project.task_set.all %}
+        {% for task in employee.assigned_tasks.all %}
 
             <tr>
-                <td>{{ task.description }}</td>
+                <td>
+                    <a href="{% url 'update-task' project.id task.id %}">
+                        {{ task.description }}
+                    </a>
+                </td>
                 <td>{{ task.hours_estimated }}</td>
                 <td>{{ task.hours_spent }} {% if task.hours_spent > task.hours_estimated%}<i class="fas fa-exclamation-circle"></i>{% endif %}</td>
-
-                    <form action="{% url 'update-project' project.id task.id %}" method="post">
-                <td>
-                                <div class="pull-right">
-                <div style="text-align:right; width:40px; display: inline-block;">
-                        {% csrf_token %}
-                        {{ form.as_table }}
-                </div>
-            </div>
-
-            </td>
-            <td>
-                <button class="button"><i class="fas fa-plus-square"></i></button>
-            </td>
-                                                                </form>
-
             </tr>
         {% endfor %}
     </table>
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="/jsi18n/"></script>
 {{ form.media }}
 
 {% load static %}
