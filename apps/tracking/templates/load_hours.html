@@ -14,6 +14,10 @@
     {% endif %}
 
     <h1>{{ task }}</h1>
+
+    <p>Horas invertidas en esta tarea: {{ task.hours_spent }}</p>
+    <p>Asignada el dia: {% now "SHORT_DATE_FORMAT" %}</p>
+    <p>Fecha de entrega estimada: 12/17/2018</p>
     <h3>Cargar horas</h3>
     <form action="{% url 'update-task' project.id task.id %}" method="post">
         {% csrf_token %}
