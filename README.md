@@ -22,10 +22,15 @@ Instalar Python 3.7.0
 Configurar el entorno virtual para el proyecto:
 `pyenv virtualenv 3.7.0 aninfo`
 
+Luego clonar este repositorio, y activar el entorno virtual de python 3.7 creando un archivo `.python-version` con contenidos `aninfo`: `echo "aninfo" > .python.version`.
+
 Instalar dependencias: `pip install -r requirements.txt`
 
 ## Correr el proyecto
 
 Correr el proyecto: `./manage.py runserver`
 
-Verificar que se levanto bien yendo a `http://localhost:8000` en un browser
+Verificar que se levanto bien yendo a `http://localhost:8000` en un browser.
+
+Como está fuera de alcance el alta de proyectos, tareas, y empleados, se pueden generar a través de la UI del Admin de Django. Para ello, crear una cuenta de superusuario: `./manage.py createsuperuser`, y seguir las instrucciones. Luego, desde `http://localhost:8000/admin` se puede utilizar la interfaz visual para crear los modelos necesarios.
+
