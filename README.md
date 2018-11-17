@@ -40,3 +40,7 @@ Se implementó una suite de pruebas de BDD con Behave, que utiliza la especifica
 
 Se pueden correr con `./manage.py behave`.
 
+## Documentación adicional y diagramas de clase
+
+- Ver [Manual de Usuario](https://docs.google.com/document/d/1NxDy82dJ4Vb_ri1M1vdEqKWgoiTnZ7orEZVUCL6DWHY/edit)
+- Ver [Diagramas adicionales](docs/)
